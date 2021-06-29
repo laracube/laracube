@@ -17,6 +17,10 @@ Code Driven Reporting Panel for Laravel.
 
 Click Here for [Documentation, Installation, and Usage Instructions](https://laracube.io)
 
+## Roadmap
+
+Click Here for [Roadmap](https://github.com/laracube/laracube/projects/1)
+
 ## Demo
 
 Click Here for [Demo](https://demo.laracube.io)

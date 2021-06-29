@@ -8,7 +8,7 @@
 [![Build Status](https://img.shields.io/travis/laracube/laracube/master.svg?style=flat-square)](https://travis-ci.org/laracube/laracube)
 [![Quality Score](https://img.shields.io/scrutinizer/g/laracube/laracube.svg?style=flat-square)](https://scrutinizer-ci.com/g/laracube/laracube)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![StyleCI](https://styleci.io/repos/379900148/shield?branch=master)](https://styleci.io/repos/291209513)
+[![StyleCI](https://styleci.io/repos/379900148/shield?branch=master)](https://styleci.io/repos/379900148)
 [![Total Downloads](https://img.shields.io/packagist/dt/laracube/laracube.svg?style=flat-square)](https://packagist.org/packages/laracube/laracube)
 
 Code Driven Reporting Panel for Laravel.

@@ -1,0 +1,31 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue",
+        "import"
+    ],
+    "rules": {
+        "indent": ["error", 4],
+        "max-len": ["warn", 120],
+        "object-curly-newline": "off",
+        "vue/valid-v-slot": ["error", { "allowModifiers": true }]
+    },
+    "settings": {
+        "import/resolver": {
+            "alias": {
+                "map": [
+                    ["@", "./resources/js"]
+                ],
+                "extensions": [".vue", ".js"]
+            }
+        }
+    }
+}

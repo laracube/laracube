@@ -1,0 +1,17 @@
+/vendor
+/laravel
+/node_modules
+/build
+/docs
+/coverage
+package-lock.json
+composer.lock
+composer.phar
+.DS_Store
+Thumbs.db
+phpunit.xml
+yarn-error.log
+.idea
+.phpunit.result.cache
+coverage
+yarn.lock

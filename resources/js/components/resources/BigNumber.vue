@@ -1,15 +1,18 @@
 <template>
     <v-card flat class="shadow">
-        <v-card-title v-if="resource.heading" class="justify-center">
-            {{ resource.heading }}
+        <v-card-title v-if="resource.heading" v-html="resource.heading">
         </v-card-title>
-        <v-card-subtitle v-if="resource.subHeading" class="justify-center">
-            {{ resource.subHeading }}
+        <v-card-subtitle
+            v-if="resource.subHeading"
+            v-html="resource.subHeading"
+        >
         </v-card-subtitle>
         <v-card-text class="px-0 text-center">
-            <div v-if="!fetching" class="text-h2 font-weight-medium">
-                {{ response.number }}
-            </div>
+            <div
+                v-if="!fetching"
+                class="text-h2 font-weight-medium"
+                v-html="response.number"
+            ></div>
             <div v-else>
                 <big-number-skeleton></big-number-skeleton>
             </div>

@@ -1,10 +1,12 @@
 <template>
     <div v-if="heading || subHeading">
         <div v-if="!loading">
-            <h2 class="font-weight-medium" v-if="heading">{{ heading }}</h2>
-            <p class="pt-2 text--secondary" v-if="subHeading">
-                {{ subHeading }}
-            </p>
+            <h2 class="font-weight-medium" v-if="heading" v-html="heading"></h2>
+            <p
+                class="pt-2 text--secondary"
+                v-if="subHeading"
+                v-html="subHeading"
+            ></p>
         </div>
         <div v-else>
             <page-heading-skeleton></page-heading-skeleton>

@@ -5,6 +5,7 @@ namespace Laracube\Laracube\Providers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laracube\Laracube\Console\InstallCommand;
+use Laracube\Laracube\Console\PublishCommand;
 
 class LaracubePackageServiceProvider extends ServiceProvider
 {
@@ -74,7 +75,7 @@ class LaracubePackageServiceProvider extends ServiceProvider
             ], 'laracube-config');
 
             $this->publishes([
-                __DIR__.'/../resources/views/partials' => resource_path('views/vendor/laracube/partials'),
+                __DIR__.'/../../resources/views/partials' => resource_path('views/vendor/laracube/partials'),
             ], 'laracube-views');
 
             $this->publishes([
@@ -93,6 +94,7 @@ class LaracubePackageServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallCommand::class,
+                PublishCommand::class,
             ]);
         }
     }

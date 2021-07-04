@@ -1,3 +1,5 @@
+@import url('https://use.fontawesome.com/releases/v5.15.3/css/all.css');
+
 nav.v-navigation-drawer ::-webkit-scrollbar {
     width: 3px;
 }

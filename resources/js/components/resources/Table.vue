@@ -1,33 +1,40 @@
 <template>
     <v-card flat class="shadow">
-        <v-card-title v-if="resource.heading">
-            {{ resource.heading }}
+        <v-card-title v-if="resource.heading" v-html="resource.heading">
         </v-card-title>
-        <v-card-subtitle v-if="resource.subHeading">
-            {{ resource.subHeading }}
+        <v-card-subtitle
+            v-if="resource.subHeading"
+            v-html="resource.subHeading"
+        >
         </v-card-subtitle>
         <v-card-text class="px-0">
             <div v-if="!fetching">
                 <v-data-table
                     :headers="pagination.meta.columns"
                     :items="pagination.data"
-                    :items-per-page="pagination.meta.per_page"
+                    :items-per-page="itemsPerPage"
                     :options.sync="options"
                     hide-default-footer
                 >
                     <template
-                        v-for="columns in pagination.meta.columns"
-                        v-slot:[`header.${columns.value}`]="{ header }"
+                        v-for="column in pagination.meta.columns"
+                        v-slot:[`header.${column.value}`]="{ header }"
                     >
-                        <v-tooltip top v-if="columns.tooltip">
+                        <v-tooltip top v-if="column.tooltip">
                             <template v-slot:activator="{ on }">
-                                <span v-on="on">{{ columns.text }}</span>
+                                <span v-on="on" v-html="column.text"></span>
                             </template>
-                            <span>{{ columns.tooltip }}</span>
+                            <span>{{ column.tooltip }}</span>
                         </v-tooltip>
                         <template v-else>
-                            {{ columns.text }}
+                            <span v-html="column.text"></span>
                         </template>
+                    </template>
+                    <template
+                        v-for="column in pagination.meta.columns"
+                        v-slot:[`item.${column.value}`]="{ item }"
+                    >
+                        <div v-html="item[column.value]"></div>
                     </template>
                 </v-data-table>
                 <v-row
@@ -80,6 +87,9 @@ export default {
     computed: {
         url() {
             return '/laracube-api/run/resource/' + this.resource.uriKey;
+        },
+        itemsPerPage() {
+            return this.pagination.meta.per_page || this.pagination.data.length;
         },
     },
     watch: {

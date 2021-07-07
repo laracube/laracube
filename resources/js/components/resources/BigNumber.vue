@@ -7,7 +7,7 @@
             v-html="resource.subHeading"
         >
         </v-card-subtitle>
-        <v-card-text class="px-0 text-center">
+        <v-card-text>
             <div
                 v-if="!fetching"
                 class="text-h2 font-weight-medium"

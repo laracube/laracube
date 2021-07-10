@@ -71,4 +71,3 @@ class TestCaseServiceProvider extends ServiceProvider
     {
     }
 }
-

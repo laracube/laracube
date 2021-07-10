@@ -115,7 +115,7 @@ class Laracube
     }
 
     /**
-     * Push Items
+     * Push Items.
      *
      * @param $itemKey
      * @param array $items

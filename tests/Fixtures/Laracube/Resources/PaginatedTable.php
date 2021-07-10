@@ -2,9 +2,9 @@
 
 namespace Laracube\Laracube\Tests\Fixtures\Laracube\Resources;
 
+use Laracube\Laracube\Base\ResourceTable;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Collections\UserCollection;
 use Laracube\Laracube\Tests\Fixtures\Models\User;
-use Laracube\Laracube\Base\ResourceTable;
 
 class PaginatedTable extends ResourceTable
 {

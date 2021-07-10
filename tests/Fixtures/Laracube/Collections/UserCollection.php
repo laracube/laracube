@@ -1,6 +1,6 @@
 <?php
 
-namespace Laracube\Laracube\Tests\Fixtures\Laracube\Collections;;
+namespace Laracube\Laracube\Tests\Fixtures\Laracube\Collections;
 
 use Laracube\Laracube\Base\ResourceTableCollection;
 
@@ -27,7 +27,7 @@ class UserCollection extends ResourceTableCollection
     }
 
     /**
-     * Get the columns definition for the report
+     * Get the columns definition for the report.
      *
      * @return array
      */

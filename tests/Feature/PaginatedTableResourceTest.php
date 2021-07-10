@@ -24,7 +24,7 @@ class PaginatedTableResourceTest extends TestCase
                         'company',
                         'email',
                         'created_at',
-                    ]
+                    ],
                 ],
                 'links' => [],
                 'meta' => [
@@ -37,7 +37,7 @@ class PaginatedTableResourceTest extends TestCase
                     'to',
                     'total',
                     'columns' => [],
-                ]
+                ],
             ]);
     }
 }

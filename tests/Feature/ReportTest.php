@@ -22,7 +22,7 @@ class ReportTest extends TestCase
                     'heading' => 'User Report One',
                     'subHeading' => 'This report shows all the users.',
                     'group' => 'Reports',
-                ]
+                ],
             ])
             ->assertJsonStructure([
                 'meta' => [

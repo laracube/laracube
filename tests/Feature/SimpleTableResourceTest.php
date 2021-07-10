@@ -24,11 +24,11 @@ class SimpleTableResourceTest extends TestCase
                         'company',
                         'email',
                         'created_at',
-                    ]
+                    ],
                 ],
                 'meta' => [
                     'columns' => [],
-                ]
+                ],
             ]);
     }
 }

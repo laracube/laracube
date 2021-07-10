@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+
+  web:
+    image: akkiio/laravel-web:7.4
+    volumes:
+      - .:/var/www/html

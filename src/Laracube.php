@@ -115,6 +115,25 @@ class Laracube
     }
 
     /**
+     * Push Items.
+     *
+     * @param $itemKey
+     * @param array $items
+     */
+    public static function pushItems($itemKey, array $items)
+    {
+        $pushItems = [];
+
+        foreach ($items as $item) {
+            $pushItems[$item::uriKey()] = $item;
+        }
+
+        static::$items[$itemKey] = array_unique(
+            array_merge(Arr::get(static::$items, $itemKey, []), $pushItems)
+        );
+    }
+
+    /**
      * Get the item class by key.
      *
      * @param $itemKey

@@ -22,6 +22,7 @@
 
 <script>
 import BigNumberSkeleton from '@/components/skeleton/BigNumberSkeleton';
+
 export default {
     name: 'BigNumber',
     components: { BigNumberSkeleton },
@@ -50,12 +51,13 @@ export default {
             if (this.url === undefined) {
                 throw 'url data property not defined';
             }
-            axios
+            this.$axios
                 .get(this.url)
                 .then(({ data }) => {
                     this.response = data;
                 })
                 .catch((error) => {
+                    console.log(error);
                     this.$toasted.error(error.message);
                 })
                 .finally(() => {

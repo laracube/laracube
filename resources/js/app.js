@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import router from '@/router';
-require('@/util/axios');
 import vuetify from '@/plugins/vuetify';
 import Toasted from 'vue-toasted';
+import VueAxios from '@/plugins/axios';
 
-window._ = require('lodash');
+Vue.use(VueAxios);
 
 Vue.use(Toasted, {
     position: 'top-center',

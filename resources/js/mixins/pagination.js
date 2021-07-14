@@ -40,7 +40,7 @@ export default {
                 page: this.page,
             };
 
-            axios
+            this.$axios
                 .get(this.url, { params })
                 .then(({ data }) => {
                     this.pagination = data;

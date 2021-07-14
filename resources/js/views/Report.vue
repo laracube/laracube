@@ -47,7 +47,7 @@ export default {
         fetchData() {
             this.loading = true;
 
-            axios
+            this.$axios
                 .get(`/laracube-api/report/${this.$route.params.uriKey}`)
                 .then((response) => {
                     this.report = response.data;

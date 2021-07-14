@@ -1,12 +1,9 @@
+import ax from 'axios';
 import store from '@/store';
 
-window.axios = require('axios');
-
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-window.axios.interceptors.request.use(
+ax.interceptors.request.use(
     function (config) {
-        let source = window.axios.CancelToken.source();
+        let source = ax.CancelToken.source();
         config.cancelToken = source.token;
         store.commit('axios/ADD_CANCEL_TOKEN', source);
         return config;
@@ -15,3 +12,11 @@ window.axios.interceptors.request.use(
         return Promise.reject(error);
     },
 );
+
+export const axios = ax;
+
+export default {
+    install(Vue, options) {
+        Vue.prototype.$axios = ax;
+    },
+};

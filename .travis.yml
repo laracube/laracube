@@ -1,20 +1,74 @@
-language: php
+jobs:
+  include:
+    - language: php
+      php:
+        - 7.3
+      cache:
+        directories:
+          - $HOME/.composer/cache
+          - $HOME/.composer/vendor
+      before_script:
+        - travis_retry composer self-update
+      install:
+        - travis_retry composer install
+      script:
+        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+      after_script:
+        - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+    - language: php
+      php:
+        - 7.4
+      cache:
+        directories:
+          - $HOME/.composer/cache
+          - $HOME/.composer/vendor
+      before_script:
+        - travis_retry composer self-update
+      install:
+        - travis_retry composer install
+      script:
+        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+      after_script:
+        - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+    - language: php
+      php:
+        - 8.0
+      cache:
+        directories:
+          - $HOME/.composer/cache
+          - $HOME/.composer/vendor
+      before_script:
+        - travis_retry composer self-update
+      install:
+        - travis_retry composer install
+      script:
+        - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+      after_script:
+        - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+    - language: node_js
+      node_js:
+        - 14
+      cache:
+        directories:
+          - $HOME/node_modules
+      before_script:
+        - travis_retry npm i -g npm
+      install:
+        - travis_retry npm install
+      script:
+        - npm test
+    - language: node_js
+      node_js:
+        - 16
+      cache:
+        directories:
+          - $HOME/node_modules
+      before_script:
+        - travis_retry npm i -g npm
+      install:
+        - travis_retry npm install
+      script:
+        - npm test
 
-php:
-  - 7.4
-  - 8.0
-
-cache:
-    directories:
-        - $HOME/.composer/cache
-        - $HOME/.composer/vendor
-
-before_script:
-  - travis_retry composer self-update
-  - travis_retry composer update --no-interaction
-
-script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
-
-after_script:
-  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+notifications:
+  email: false

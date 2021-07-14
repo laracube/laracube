@@ -73,7 +73,7 @@ class Laracube
      */
     public static function version()
     {
-        return '0.2.1';
+        return '0.2.2';
     }
 
     /**

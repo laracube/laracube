@@ -19,10 +19,5 @@ export default {
     props: {
         resource: { required: true },
     },
-    methods: {
-        getResourceRunUrl(resource) {
-            return '/laracube-api/run/resource/' + resource.uriKey;
-        },
-    },
 };
 </script>

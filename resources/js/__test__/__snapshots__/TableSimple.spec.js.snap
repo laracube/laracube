@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableSimple should show the correct data from api response 1`] = `
+<div>
+  <div>
+    <div class="shadow v-card v-card--flat v-sheet theme--light">
+      <div class="v-card__title">Heading</div>
+      <div class="v-card__subtitle">Sub Heading</div>
+      <div class="v-card__text px-0">
+        <div>
+          <div class="v-data-table theme--light">
+            <div class="v-data-table__wrapper">
+              <table>
+                <colgroup>
+                  <col class="">
+                </colgroup>
+                <thead class="v-data-table-header">
+                  <tr>
+                    <th role="columnheader" scope="col" aria-label="Name" class="text-start"><span>Name</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td class="text-start">
+                      <div>Marvin</div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="text-start">
+                      <div>Jasper</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+</div>
+`;

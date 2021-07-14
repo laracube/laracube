@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TablePaginated should show the correct data from api response 1`] = `
+<div>
+  <div>
+    <div class="shadow v-card v-card--flat v-sheet theme--light">
+      <div class="v-card__title">Heading</div>
+      <div class="v-card__subtitle">Sub Heading</div>
+      <div class="v-card__text px-0">
+        <div>
+          <div class="v-data-table theme--light">
+            <div class="v-data-table__wrapper">
+              <table>
+                <colgroup>
+                  <col class="">
+                </colgroup>
+                <thead class="v-data-table-header">
+                  <tr>
+                    <th role="columnheader" scope="col" aria-label="Name" class="text-start"><span>Name</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td class="text-start">
+                      <div>Marvin</div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="text-start">
+                      <div>Jasper</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row pt-2 align-center no-gutters">
+            <div class="pl-5 col">
+              Showing
+              <span class="font-weight-medium">
+                        1
+                    </span>
+              to
+              <span class="font-weight-medium">
+                        3
+                    </span>
+              of
+              <span class="font-weight-medium">
+                        20
+                    </span>
+              results
+            </div>
+            <div class="col">
+              <nav role="navigation" aria-label="Pagination Navigation" class="float-right pr-3">
+                <ul class="v-pagination theme--light">
+                  <li><button disabled="disabled" type="button" aria-label="Previous page" class="v-pagination__navigation v-pagination__navigation--disabled"><i aria-hidden="true" class="v-icon notranslate mdi mdi-chevron-left theme--light"></i></button></li>
+                  <li><button type="button" aria-current="true" aria-label="Current Page, Page 1" class="v-pagination__item v-pagination__item--active primary">1</button></li>
+                  <li><button type="button" aria-label="Goto Page 2" class="v-pagination__item">2</button></li>
+                  <li><button type="button" aria-label="Goto Page 3" class="v-pagination__item">3</button></li>
+                  <li><button type="button" aria-label="Goto Page 4" class="v-pagination__item">4</button></li>
+                  <li><button type="button" aria-label="Goto Page 5" class="v-pagination__item">5</button></li>
+                  <li><button type="button" aria-label="Next page" class="v-pagination__navigation"><i aria-hidden="true" class="v-icon notranslate mdi mdi-chevron-right theme--light"></i></button></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+</div>
+`;

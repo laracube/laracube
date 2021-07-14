@@ -12,7 +12,21 @@ jest.mock('axios', () => ({
     get: () =>
         Promise.resolve({
             data: {
-                number: '100',
+                data: [{ name: 'Marvin' }, { name: 'Jasper' }],
+                meta: {
+                    last_page: 5,
+                    from: 1,
+                    to: 3,
+                    total: 20,
+                    columns: [
+                        {
+                            sortable: false,
+                            text: 'Name',
+                            tooltip: null,
+                            value: 'name',
+                        },
+                    ],
+                },
             },
         }),
 }));
@@ -26,11 +40,11 @@ function factory() {
         propsData: {
             resource: {
                 columns: 4,
-                component: 'big-number',
+                component: 'table',
                 heading: 'Heading',
                 subHeading: 'Sub Heading',
-                type: null,
-                uriKey: 'big-number',
+                type: 'paginated',
+                uriKey: 'paginated-table',
             },
         },
         mocks: {
@@ -39,7 +53,7 @@ function factory() {
     });
 }
 
-describe('BigNumber', () => {
+describe('TablePaginated', () => {
     it('should load the components', () => {
         const wrapper = factory();
         expect(wrapper.find('.v-card').vm).toBeTruthy();
@@ -57,6 +71,6 @@ describe('BigNumber', () => {
         const wrapper = factory();
         await flushPromises();
         expect(wrapper.html()).toMatchSnapshot();
-        expect(wrapper.find('.v-card__text>.text-h2').html()).toContain(100);
+        expect(wrapper.find('td').html()).toContain('Marvin');
     });
 });

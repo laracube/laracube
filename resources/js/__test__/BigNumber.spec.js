@@ -12,7 +12,19 @@ jest.mock('axios', () => ({
     get: () =>
         Promise.resolve({
             data: {
-                number: '100',
+                line1: {
+                    value: 100,
+                },
+                line2: {
+                    value: 'from 50',
+                },
+                trend: {
+                    value: 20,
+                    icon: 'fa-arrow-up',
+                },
+                sparkline: {
+                    value: [1, 2, 3, 4, 5, 6],
+                },
             },
         }),
 }));
@@ -53,10 +65,22 @@ describe('BigNumber', () => {
         );
     });
 
-    it('should show the correct data from api response', async () => {
+    it('should show the correct data from api response for line 1', async () => {
         const wrapper = factory();
         await flushPromises();
         expect(wrapper.html()).toMatchSnapshot();
-        expect(wrapper.find('.v-card__text>.text-h2').html()).toContain(100);
+        expect(wrapper.find('.line1').html()).toContain(100);
+    });
+
+    it('should show the correct data from api response for line 2', async () => {
+        const wrapper = factory();
+        await flushPromises();
+        expect(wrapper.find('.line2').html()).toContain('from 50');
+    });
+
+    it('should show the correct data from api response for trend', async () => {
+        const wrapper = factory();
+        await flushPromises();
+        expect(wrapper.find('.trend').html()).toContain('20');
     });
 });

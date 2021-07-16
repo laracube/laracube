@@ -13,12 +13,12 @@
                     <div class="d-flex justify-space-between align-center">
                         <div class="d-flex flex-column">
                             <div
-                                class="text-h2 font-weight-medium"
+                                class="text-h2 font-weight-medium line1"
                                 v-if="response.line1 && response.line1.value"
                                 v-html="response.line1.value"
                             ></div>
                             <div
-                                class="text-h5 font-weight-medium pl-1"
+                                class="text-h5 font-weight-medium pl-1 line2"
                                 v-if="response.line2 && response.line2.value"
                                 v-html="response.line2.value"
                             ></div>
@@ -33,6 +33,7 @@
                                     py-2
                                     rounded
                                     shadow-sm
+                                    trend
                                 "
                                 :class="response.trend.class"
                             >

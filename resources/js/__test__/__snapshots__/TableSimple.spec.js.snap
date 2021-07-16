@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableSimple should show the correct data from api response 1`] = `
-<div>
-  <div>
-    <div class="shadow v-card v-card--flat v-sheet theme--light">
+<div class="fill-height">
+  <div class="fill-height">
+    <div class="shadow fill-height v-card v-card--flat v-sheet theme--light">
       <div class="v-card__title">Heading</div>
       <div class="v-card__subtitle">Sub Heading</div>
       <div class="v-card__text px-0">

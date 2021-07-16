@@ -16,7 +16,19 @@ class BigNumberResourceTest extends TestCase
             ->get('laracube-api/run/resource/big-number')
             ->assertSuccessful()
             ->assertJson([
-                'number' => 40,
+               'line1' => [
+                   'value' => 40,
+               ],
+                'line2' => [
+                    'value' => 35,
+                ],
+                'trend' => [
+                    'value' => 30,
+                    'icon' => 'fa-up',
+                ],
+                'sparkline' => [
+                    'value' => [1, 2, 3],
+                ],
             ]);
     }
 }

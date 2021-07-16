@@ -46,6 +46,14 @@ Vue.use(Vuetify, {
     },
 });
 
-const opts = {};
+const opts = {
+    theme: {
+        themes: {
+            light: {
+                primary: '#FF0000',
+            },
+        },
+    },
+};
 
 export default new Vuetify(opts);

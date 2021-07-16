@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/laracube/laracube/master/hero.png" alt="Hero" width="600">
+    <img src="https://raw.githubusercontent.com/laracube/laracube/master/hero.png" alt="Hero">
 </p>
 
 # Laracube

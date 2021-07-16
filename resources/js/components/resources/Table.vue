@@ -1,5 +1,5 @@
 <template>
-    <v-card flat class="shadow">
+    <v-card flat class="shadow fill-height">
         <v-card-title v-if="resource.heading" v-html="resource.heading">
         </v-card-title>
         <v-card-subtitle

@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <div v-if="resource.component === 'table'">
+    <div class="fill-height">
+        <div v-if="resource.component === 'table'" class="fill-height">
             <laracube-table :resource="resource"></laracube-table>
         </div>
-        <div v-if="resource.component === 'big-number'">
+        <div v-if="resource.component === 'big-number'" class="fill-height">
             <big-number :resource="resource"></big-number>
         </div>
     </div>

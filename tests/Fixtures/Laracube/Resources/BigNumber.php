@@ -28,8 +28,22 @@ class BigNumber extends ResourceBigNumber
      */
     public function output()
     {
+        $count = User::count();
+
         return [
-            'number' => User::count(),
+            'line1' => [
+                'value' => $count,
+            ],
+            'line2' => [
+                'value' => $count - 5,
+            ],
+            'trend' => [
+                'value' => $count - 10,
+                'icon' => 'fa-up',
+            ],
+            'sparkline' => [
+                'value' => [1, 2, 3],
+            ],
         ];
     }
 }

@@ -35,10 +35,10 @@ class BigNumber extends ResourceBigNumber
                 'value' => $count,
             ],
             'line2' => [
-                'value' => $count-5,
+                'value' => $count - 5,
             ],
             'trend' => [
-                'value' => $count-10,
+                'value' => $count - 10,
                 'icon' => 'fa-up',
             ],
             'sparkline' => [

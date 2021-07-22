@@ -1,12 +1,21 @@
 <template>
     <div v-if="heading || subHeading">
-        <div v-if="!loading">
-            <h2 class="font-weight-medium" v-if="heading" v-html="heading"></h2>
-            <p
-                class="pt-2 text--secondary"
-                v-if="subHeading"
-                v-html="subHeading"
-            ></p>
+        <div class="d-flex align-center" v-if="!loading">
+            <h2
+                class="grey--text text--darken-3 font-weight-medium pr-2"
+                v-if="heading"
+                v-html="heading"
+            ></h2>
+            <v-tooltip right v-if="subHeading">
+                <template v-slot:activator="{ on, attrs }">
+                    <i
+                        class="fas fa-info-circle grey--text text--darken-1"
+                        v-bind="attrs"
+                        v-on="on"
+                    ></i>
+                </template>
+                <span v-html="subHeading"></span>
+            </v-tooltip>
         </div>
         <div v-else>
             <page-heading-skeleton></page-heading-skeleton>

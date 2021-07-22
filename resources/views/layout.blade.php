@@ -17,7 +17,7 @@
                     flat
                     clipped-left
                     color="white"
-                    class="shadow z-50"
+                    class="lc-shadow z-50"
                 >
                     <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
                     <v-row no-gutters>
@@ -33,13 +33,13 @@
                     app
                     floating
                     clipped
-                    color="grey lighten-5"
+                    color="lc-background"
                     v-model="drawer"
                 >
                     @include('laracube::partials.navigation')
                 </v-navigation-drawer>
                 <v-main
-                    class="grey lighten-5"
+                    class="lc-background"
                 >
                     <v-container
                         fluid
@@ -52,7 +52,7 @@
                 </v-main>
                 <v-footer
                     app
-                    color="grey lighten-5"
+                    color="lc-background"
                 >
                     @include('laracube::partials.footer')
                 </v-footer>

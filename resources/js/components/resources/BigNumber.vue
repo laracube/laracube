@@ -1,24 +1,47 @@
 <template>
-    <v-card flat class="shadow fill-height">
-        <v-card-title v-if="resource.heading" v-html="resource.heading">
-        </v-card-title>
-        <v-card-subtitle
-            v-if="resource.subHeading"
-            v-html="resource.subHeading"
-        >
-        </v-card-subtitle>
+    <v-card flat class="lc-shadow fill-height lc-rounded">
+        <div class="d-flex align-center">
+            <v-card-title
+                class="grey--text text--darken-2 pr-2"
+                v-if="resource.heading"
+                v-html="resource.heading"
+            >
+            </v-card-title>
+            <v-tooltip right v-if="resource.subHeading">
+                <template v-slot:activator="{ on, attrs }">
+                    <i
+                        class="fas fa-info-circle grey--text text--darken-1"
+                        v-bind="attrs"
+                        v-on="on"
+                    ></i>
+                </template>
+                <span v-html="resource.subHeading"></span>
+            </v-tooltip>
+        </div>
         <v-card-text>
             <div v-if="!fetching">
                 <div class="d-flex flex-column">
                     <div class="d-flex justify-space-between align-center">
                         <div class="d-flex flex-column">
                             <div
-                                class="text-h2 font-weight-medium line1"
+                                class="
+                                    text-h3
+                                    grey--text
+                                    text--darken-3
+                                    font-weight-medium
+                                    line1
+                                "
                                 v-if="response.line1 && response.line1.value"
                                 v-html="response.line1.value"
                             ></div>
                             <div
-                                class="text-h5 font-weight-medium pl-1 line2"
+                                class="
+                                    text-h6
+                                    grey--text
+                                    text--darken-2
+                                    pl-1
+                                    line2
+                                "
                                 v-if="response.line2 && response.line2.value"
                                 v-html="response.line2.value"
                             ></div>
@@ -78,7 +101,7 @@
                     ></v-sparkline>
                     <div
                         v-if="response.sparkline && response.sparkline.title"
-                        class="text-center"
+                        class="text-center grey--text text--darken-2"
                     >
                         <div v-html="response.sparkline.title"></div>
                     </div>

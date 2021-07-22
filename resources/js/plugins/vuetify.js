@@ -50,7 +50,9 @@ const opts = {
     theme: {
         themes: {
             light: {
-                primary: '#FF0000',
+                primary: '#6078FF',
+                secondary: '#33334f',
+                'lc-background': '#F5F5F7',
             },
         },
     },

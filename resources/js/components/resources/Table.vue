@@ -1,12 +1,21 @@
 <template>
-    <v-card flat class="shadow fill-height">
-        <v-card-title v-if="resource.heading" v-html="resource.heading">
-        </v-card-title>
-        <v-card-subtitle
-            v-if="resource.subHeading"
-            v-html="resource.subHeading"
+    <v-card flat class="lc-shadow lc-rounded fill-height">
+        <v-card-title
+            v-if="resource.heading"
+            class="grey--text text--darken-2 pr-2"
+            v-html="resource.heading"
         >
-        </v-card-subtitle>
+        </v-card-title>
+        <v-tooltip right v-if="resource.subHeading">
+            <template v-slot:activator="{ on, attrs }">
+                <i
+                    class="fas fa-info-circle grey--text text--darken-1"
+                    v-bind="attrs"
+                    v-on="on"
+                ></i>
+            </template>
+            <span v-html="resource.subHeading"></span>
+        </v-tooltip>
         <v-card-text class="px-0">
             <div v-if="!fetching">
                 <v-data-table
@@ -22,12 +31,19 @@
                     >
                         <v-tooltip top v-if="column.tooltip">
                             <template v-slot:activator="{ on }">
-                                <span v-on="on" v-html="column.text"></span>
+                                <span
+                                    class="grey--text text--darken-2"
+                                    v-on="on"
+                                    v-html="column.text"
+                                ></span>
                             </template>
                             <span>{{ column.tooltip }}</span>
                         </v-tooltip>
                         <template v-else>
-                            <span v-html="column.text"></span>
+                            <span
+                                class="grey--text text--darken-2"
+                                v-html="column.text"
+                            ></span>
                         </template>
                     </template>
                     <template
@@ -42,17 +58,17 @@
                     class="pt-2 align-center"
                     v-if="resource.type === 'paginated'"
                 >
-                    <v-col class="pl-5">
+                    <v-col class="pl-5 grey--text text--darken-2">
                         Showing
-                        <span class="font-weight-medium">
+                        <span class="font-weight-bold">
                             {{ pagination.meta.from }}
                         </span>
                         to
-                        <span class="font-weight-medium">
+                        <span class="font-weight-bold">
                             {{ pagination.meta.to }}
                         </span>
                         of
-                        <span class="font-weight-medium">
+                        <span class="font-weight-bold">
                             {{ pagination.meta.total }}
                         </span>
                         results
@@ -62,7 +78,7 @@
                             v-model="page"
                             :length="pagination.meta.last_page"
                             :total-visible="5"
-                            class="float-right pr-3"
+                            class="float-right pr-3 grey--text text--darken-2"
                         ></v-pagination>
                     </v-col>
                 </v-row>

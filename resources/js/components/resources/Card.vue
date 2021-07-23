@@ -10,6 +10,9 @@
                     <div v-if="element.type === 'sparkline'" class="mb-5">
                         <sparkline :data="element.data"></sparkline>
                     </div>
+                    <div v-if="element.type === 'customHtml'" class="mb-5">
+                        <custom-html :data="element.data"></custom-html>
+                    </div>
                 </div>
             </div>
             <div v-else>
@@ -24,10 +27,12 @@ import Sparkline from '@/components/resources/elements/Sparkline';
 import ResourceHeading from '@/components/resources/elements/ResourceHeading';
 import UniversalSkeleton from '@/components/skeleton/UniversalSkeleton';
 import BigNumber from '@/components/resources/elements/BigNumber';
+import CustomHtml from '@/components/resources/elements/CustomHtml';
 
 export default {
     name: 'Card',
     components: {
+        CustomHtml,
         BigNumber,
         UniversalSkeleton,
         ResourceHeading,

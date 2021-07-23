@@ -2,14 +2,14 @@
 
 namespace Laracube\Laracube\Base;
 
-abstract class ResourceBigNumber extends Resource
+abstract class ResourceCard extends Resource
 {
     /**
      * The component of the resource.
      *
      * @var string
      */
-    protected static $component = 'big-number';
+    protected static $component = 'card';
 
     /**
      * Get the output for the resource.

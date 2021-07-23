@@ -1,23 +1,5 @@
 <template>
     <v-card flat class="lc-shadow fill-height lc-rounded">
-        <div class="d-flex align-center">
-            <v-card-title
-                class="grey--text text--darken-2 pr-2"
-                v-if="resource.heading"
-                v-html="resource.heading"
-            >
-            </v-card-title>
-            <v-tooltip right v-if="resource.subHeading">
-                <template v-slot:activator="{ on, attrs }">
-                    <i
-                        class="fas fa-info-circle grey--text text--darken-1"
-                        v-bind="attrs"
-                        v-on="on"
-                    ></i>
-                </template>
-                <span v-html="resource.subHeading"></span>
-            </v-tooltip>
-        </div>
         <v-card-text>
             <div v-if="!fetching">
                 <div class="d-flex flex-column">
@@ -70,41 +52,7 @@
                             </div>
                         </div>
                     </div>
-                    <v-sparkline
-                        v-if="
-                            response.sparkline &&
-                            Array.isArray(response.sparkline.value)
-                        "
-                        :auto-draw="response.sparkline.autoDraw"
-                        :auto-draw-duration="
-                            response.sparkline.autoDrawDuration
-                        "
-                        :auto-draw-easing="response.sparkline.autoDrawEasing"
-                        :auto-line-width="response.sparkline.autoLineWidth"
-                        :color="response.sparkline.color"
-                        :fill="response.sparkline.fill"
-                        :gradient="response.sparkline.gradient"
-                        :gradient-direction="
-                            response.sparkline.gradientDirection
-                        "
-                        :height="response.sparkline.height"
-                        :label-size="response.sparkline.labelSize"
-                        :labels="response.sparkline.labels"
-                        :lineWidth="response.sparkline.lineWidth"
-                        :padding="response.sparkline.padding"
-                        :show-labels="response.sparkline.showLabels"
-                        :smooth="response.sparkline.smooth"
-                        :type="response.sparkline.type"
-                        :value="response.sparkline.value"
-                        :width="response.sparkline.width"
-                        class="mt-4"
-                    ></v-sparkline>
-                    <div
-                        v-if="response.sparkline && response.sparkline.title"
-                        class="text-center grey--text text--darken-2"
-                    >
-                        <div v-html="response.sparkline.title"></div>
-                    </div>
+                    <sparkline :sparkline="response.sparkline"></sparkline>
                 </div>
             </div>
             <div v-else>
@@ -116,10 +64,11 @@
 
 <script>
 import BigNumberSkeleton from '@/components/skeleton/BigNumberSkeleton';
+import Sparkline from '@/components/resources/elements/Sparkline';
 
 export default {
     name: 'BigNumber',
-    components: { BigNumberSkeleton },
+    components: { Sparkline, BigNumberSkeleton },
     props: {
         resource: { required: true },
     },
@@ -143,13 +92,8 @@ export default {
                     icon: null,
                     class: null,
                 },
-                sparkline: {
-                    title: null,
-                    value: null,
-                    labels: null,
-                },
+                sparkline: {},
             },
-            sparklineConfig: {},
         };
     },
     mounted() {

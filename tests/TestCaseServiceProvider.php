@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Laracube\Laracube\Laracube;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Reports\UserReportOne;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Reports\UserReportTwo;
-use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\BigNumber;
+use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\Card;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\PaginatedTable;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\SimpleTable;
 
@@ -30,7 +30,7 @@ class TestCaseServiceProvider extends ServiceProvider
         Laracube::pushItems(Laracube::$resources, [
             PaginatedTable::class,
             SimpleTable::class,
-            BigNumber::class,
+            Card::class,
         ]);
     }
 

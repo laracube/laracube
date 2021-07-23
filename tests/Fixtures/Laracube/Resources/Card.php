@@ -2,10 +2,10 @@
 
 namespace Laracube\Laracube\Tests\Fixtures\Laracube\Resources;
 
-use Laracube\Laracube\Base\ResourceBigNumber;
+use Laracube\Laracube\Base\ResourceCard;
 use Laracube\Laracube\Tests\Fixtures\Models\User;
 
-class BigNumber extends ResourceBigNumber
+class Card extends ResourceCard
 {
     /**
      * The single value that will be displayed as heading.

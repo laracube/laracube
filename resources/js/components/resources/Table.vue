@@ -84,18 +84,19 @@
                 </v-row>
             </div>
             <div v-else>
-                <table-skeleton></table-skeleton></div
-        ></v-card-text>
+                <universal-skeleton></universal-skeleton>
+            </div>
+        </v-card-text>
     </v-card>
 </template>
 
 <script>
 import pagination from '@/mixins/pagination';
-import TableSkeleton from '@/components/skeleton/TableSkeleton';
+import UniversalSkeleton from '@/components/skeleton/UniversalSkeleton';
 
 export default {
     name: 'Table',
-    components: { TableSkeleton },
+    components: { UniversalSkeleton },
     mixins: [pagination],
     props: {
         resource: { required: true },

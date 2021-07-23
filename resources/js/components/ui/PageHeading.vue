@@ -18,17 +18,17 @@
             </v-tooltip>
         </div>
         <div v-else>
-            <page-heading-skeleton></page-heading-skeleton>
+            <universal-skeleton></universal-skeleton>
         </div>
     </div>
 </template>
 
 <script>
-import PageHeadingSkeleton from '@/components/skeleton/PageHeadingSkeleton';
+import UniversalSkeleton from '@/components/skeleton/UniversalSkeleton';
 
 export default {
     name: 'PageHeading',
-    components: { PageHeadingSkeleton },
+    components: { UniversalSkeleton },
     props: {
         loading: { required: false, default: true },
         heading: { required: false, default: null },

@@ -18,6 +18,10 @@ class ReportController extends Controller
     {
         $report = Laracube::getItemClass(Laracube::$reports, $uriKey);
 
+        if (!$report->canSee()) {
+            abort(403);
+        }
+
         return response()->json($report->details());
     }
 }

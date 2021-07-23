@@ -16,8 +16,12 @@ class RunResourceController extends Controller
      */
     public function index($uriKey)
     {
-        $report = Laracube::getItemClass(Laracube::$resources, $uriKey);
+        $resource = Laracube::getItemClass(Laracube::$resources, $uriKey);
 
-        return $report->run();
+        if (!$resource->canSee()) {
+            abort(403);
+        }
+
+        return $resource->run();
     }
 }

@@ -3,9 +3,12 @@
 namespace Laracube\Laracube\Base;
 
 use Illuminate\Support\Str;
+use Laracube\Laracube\Traits\AuthorizedToSee;
 
 abstract class Report
 {
+    use AuthorizedToSee;
+
     /**
      * The logical group associated with the report.
      *
@@ -90,7 +93,9 @@ abstract class Report
         $resources = [];
 
         foreach ($this->resources() as $resource) {
-            $resources[] = $resource->details();
+            if ($resource->canSee()) {
+                $resources[] = $resource->details();
+            }
         }
 
         return $resources;

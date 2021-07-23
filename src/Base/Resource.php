@@ -3,9 +3,12 @@
 namespace Laracube\Laracube\Base;
 
 use Illuminate\Support\Str;
+use Laracube\Laracube\Traits\AuthorizedToSee;
 
 abstract class Resource
 {
+    use AuthorizedToSee;
+
     /**
      * The single value that will be displayed as heading.
      *

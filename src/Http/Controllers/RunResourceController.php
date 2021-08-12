@@ -2,6 +2,7 @@
 
 namespace Laracube\Laracube\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Laracube\Laracube\Laracube;
 
 class RunResourceController extends Controller
@@ -10,11 +11,11 @@ class RunResourceController extends Controller
      * Get the result of the resource.
      *
      * @param $uriKey
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Illuminate\Http\JsonResponse
-     * @throws \Throwable
      */
-    public function index($uriKey)
+    public function index($uriKey, Request $request)
     {
         $resource = Laracube::getItemClass(Laracube::$resources, $uriKey);
 

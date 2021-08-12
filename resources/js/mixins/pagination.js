@@ -41,7 +41,7 @@ export default {
             };
 
             this.$axios
-                .get(this.url, { params })
+                .post(this.url, { params })
                 .then(({ data }) => {
                     this.pagination = data;
                 })

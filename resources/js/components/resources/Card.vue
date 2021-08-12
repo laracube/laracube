@@ -62,7 +62,7 @@ export default {
                 throw 'url data property not defined';
             }
             this.$axios
-                .get(this.url)
+                .post(this.url)
                 .then(({ data }) => {
                     this.response = data;
                 })

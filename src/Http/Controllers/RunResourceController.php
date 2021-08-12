@@ -19,7 +19,7 @@ class RunResourceController extends Controller
     {
         $resource = Laracube::getItemClass(Laracube::$resources, $uriKey);
 
-        if (!$resource->canSee()) {
+        if (! $resource->canSee()) {
             abort(403);
         }
 

@@ -51,7 +51,7 @@ class HomeController extends Controller
 
         foreach ($reports as $key => $report) {
             $class = Laracube::getItemClass(Laracube::$reports, $key);
-            if (!$class->canSee()) {
+            if (! $class->canSee()) {
                 unset($reports[$key]);
             }
         }

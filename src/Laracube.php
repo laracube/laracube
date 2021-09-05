@@ -28,6 +28,13 @@ class Laracube
     public static $resources = 'resources';
 
     /**
+     * Item key for filters.
+     *
+     * @var string
+     */
+    public static $filters = 'filters';
+
+    /**
      * The registered items.
      *
      * @var array

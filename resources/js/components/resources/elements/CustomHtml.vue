@@ -1,10 +1,6 @@
 <template>
     <div>
-        <div
-            :class="data.cssClass"
-            v-if="data && data.value"
-            v-html="data.value"
-        ></div>
+        <div :class="data.cssClass" v-if="data && data.value" v-html="data.value"></div>
     </div>
 </template>
 

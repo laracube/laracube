@@ -22,10 +22,7 @@
             :width="data.width"
             class="mt-4"
         ></v-sparkline>
-        <div
-            v-if="data && data.title"
-            class="text-center grey--text text--darken-2"
-        >
+        <div v-if="data && data.title" class="text-center grey--text text--darken-2">
             <div v-html="data.title"></div>
         </div>
     </div>

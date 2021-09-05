@@ -20,3 +20,5 @@ mix.js('resources/js/app.js', '../../public/vendor/laracube')
     .setPublicPath('../../public/vendor/laracube')
     .postCss('resources/css/app.css', '../../public/vendor/laracube')
     .version();
+
+mix.disableNotifications();

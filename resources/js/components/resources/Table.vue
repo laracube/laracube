@@ -1,18 +1,10 @@
 <template>
     <v-card flat class="lc-shadow lc-rounded fill-height">
-        <v-card-title
-            v-if="resource.heading"
-            class="grey--text text--darken-2 pr-2"
-            v-html="resource.heading"
-        >
+        <v-card-title v-if="resource.heading" class="grey--text text--darken-2 pr-2" v-html="resource.heading">
         </v-card-title>
         <v-tooltip right v-if="resource.subHeading">
             <template v-slot:activator="{ on, attrs }">
-                <i
-                    class="fas fa-info-circle grey--text text--darken-1"
-                    v-bind="attrs"
-                    v-on="on"
-                ></i>
+                <i class="fas fa-info-circle grey--text text--darken-1" v-bind="attrs" v-on="on"></i>
             </template>
             <span v-html="resource.subHeading"></span>
         </v-tooltip>
@@ -25,39 +17,22 @@
                     :options.sync="options"
                     hide-default-footer
                 >
-                    <template
-                        v-for="column in pagination.meta.columns"
-                        v-slot:[`header.${column.value}`]="{ header }"
-                    >
+                    <template v-for="column in pagination.meta.columns" v-slot:[`header.${column.value}`]="{ header }">
                         <v-tooltip top v-if="column.tooltip">
                             <template v-slot:activator="{ on }">
-                                <span
-                                    class="grey--text text--darken-2"
-                                    v-on="on"
-                                    v-html="column.text"
-                                ></span>
+                                <span class="grey--text text--darken-2" v-on="on" v-html="column.text"></span>
                             </template>
                             <span>{{ column.tooltip }}</span>
                         </v-tooltip>
                         <template v-else>
-                            <span
-                                class="grey--text text--darken-2"
-                                v-html="column.text"
-                            ></span>
+                            <span class="grey--text text--darken-2" v-html="column.text"></span>
                         </template>
                     </template>
-                    <template
-                        v-for="column in pagination.meta.columns"
-                        v-slot:[`item.${column.value}`]="{ item }"
-                    >
+                    <template v-for="column in pagination.meta.columns" v-slot:[`item.${column.value}`]="{ item }">
                         <div v-html="item[column.value]"></div>
                     </template>
                 </v-data-table>
-                <v-row
-                    no-gutters
-                    class="pt-2 align-center"
-                    v-if="resource.type === 'paginated'"
-                >
+                <v-row no-gutters class="pt-2 align-center" v-if="resource.type === 'paginated'">
                     <v-col class="pl-5 grey--text text--darken-2">
                         Showing
                         <span class="font-weight-bold">

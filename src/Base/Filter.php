@@ -33,7 +33,7 @@ abstract class Filter
     /**
      * Get the options for the filter.
      *
-     * @return array
+     * @return mixed
      */
     abstract public function options();
 

@@ -1,20 +1,17 @@
 <template>
     <div>
         <div class="d-flex align-center justify-space-between">
-            <page-heading
-                :heading="report.meta.heading"
-                :sub-heading="report.meta.subHeading"
-                :loading="loading"
-            >
+            <page-heading :heading="report.meta.heading" :sub-heading="report.meta.subHeading" :loading="loading">
             </page-heading>
             <div class="float-right">
-                <render-filters :filters="report.filters"></render-filters>
+                <filters v-if="!loading" :report="report"></filters>
             </div>
         </div>
         <v-row class="mt-5">
             <v-col
                 cols="12"
-                :sm="resource.columns || 3"
+                :md="resource.columns || 3"
+                :sm="12"
                 v-for="(resource, index) in report.resources"
                 :key="index"
             >
@@ -27,11 +24,11 @@
 <script>
 import PageHeading from '@/components/ui/PageHeading';
 import RenderResource from '@/components/resources/RenderResource';
-import RenderFilters from '@/components/filters/RenderFilters';
+import Filters from '@/components/filters/Filters';
 
 export default {
     name: 'Report',
-    components: { RenderFilters, PageHeading, RenderResource },
+    components: { Filters, PageHeading, RenderResource },
     data() {
         return {
             loading: true,

@@ -58,9 +58,7 @@ describe('TableSimple', () => {
     it('should show the heading and sub-heading', () => {
         const wrapper = factory();
         expect(wrapper.find('.v-card__title').html()).toContain('Heading');
-        expect(wrapper.find('.v-card__subtitle').html()).toContain(
-            'Sub Heading',
-        );
+        expect(wrapper.find('.v-card__subtitle').html()).toContain('Sub Heading');
     });
 
     it('should show the correct data from api response', async () => {

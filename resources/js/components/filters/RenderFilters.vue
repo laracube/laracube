@@ -12,13 +12,13 @@
                 </template>
                 <v-card>
                     <v-toolbar dark color="primary" tile flat class="lc-shadow">
-                        <v-btn icon dark @click="filterDialog = false">
+                        <v-btn icon dark @click="closeDialog">
                             <v-icon>mdi-close</v-icon>
                         </v-btn>
                         <v-toolbar-title>Filters</v-toolbar-title>
                         <v-spacer></v-spacer>
                         <v-toolbar-items>
-                            <v-btn dark text @click="resetFilters"> <v-icon>mdi-refresh</v-icon> Reset all </v-btn>
+                            <v-btn dark text @click="resetAll"> <v-icon>mdi-refresh</v-icon> Reset all </v-btn>
                         </v-toolbar-items>
                     </v-toolbar>
                     <v-list three-line subheader class="mt-5">
@@ -27,11 +27,22 @@
                                 <v-list-item-title>
                                     {{ filter.heading }}
                                 </v-list-item-title>
-                                <render-filter
-                                    :report="report"
-                                    :filter="filter"
-                                    @filter-changed="filterChanged"
-                                ></render-filter>
+                                <div v-if="filter.type === 'single-select'">
+                                    <single-select
+                                        :report="report"
+                                        :filter="filter"
+                                        :refresh="filterDialog"
+                                        @filter-changed="filterChanged"
+                                    ></single-select>
+                                </div>
+                                <div v-if="filter.type === 'multiple-select'">
+                                    <multiple-select
+                                        :report="report"
+                                        :filter="filter"
+                                        :refresh="filterDialog"
+                                        @filter-changed="filterChanged"
+                                    ></multiple-select>
+                                </div>
                             </v-list-item-content>
                         </v-list-item>
                         <v-list-item>
@@ -56,55 +67,23 @@
 </template>
 
 <script>
-import RenderFilter from '@/components/filters/RenderFilter';
-import { mapMutations, mapState } from 'vuex';
+import { mapMutations } from 'vuex';
+import SingleSelect from '@/components/filters/elements/SingleSelect';
+import MultipleSelect from '@/components/filters/elements/MultipleSelect';
+import _ from 'lodash';
 
 export default {
-    name: 'Filters',
-    components: { RenderFilter },
+    name: 'RenderFilters',
+    components: { SingleSelect, MultipleSelect },
     props: {
         report: { required: true },
     },
-    computed: {
-        ...mapState('filters', ['filters']),
-    },
     mounted() {
         if (Array.isArray(this.report.filters) && this.report.filters.length) {
-            this.reportFilters = { ...this.filters };
-            // set report filters
+            this.reportFilters = _.cloneDeep(this.$store.state.filters.filters);
             if (!this.reportFilters.hasOwnProperty(this.report.meta.uriKey)) {
                 this.reportFilters[this.report.meta.uriKey] = {};
             }
-            for (const filter in this.report.filters) {
-                if (!this.reportFilters.hasOwnProperty(this.report.meta.uriKey)) {
-                    this.reportFilters[this.report.meta.uriKey] = {};
-                }
-                console.log(this.report.filters[filter]);
-            }
-            // let reportFilters = this.reportFilters[this.report.meta.uriKey];
-            //
-            // for (i = 0; i < this.report.filters.length; i++) {
-            //     if (
-            //         !this.reportFilters[this.report.meta.uriKey].hasOwnProperty(
-            //             this.report.filter[i].key,
-            //         )
-            //     ) {
-            //         this.reportFilters[this.report.meta.uriKey] = {};
-            //     }
-            //
-            //     this.report.filters.forEach(function (filter) {
-            //         if (!reportFilters.hasOwnProperty(filter.key)) {
-            //             this.reportFilters[this.report.meta.uriKey][
-            //                 filter.key
-            //             ] = {};
-            //         }
-            //     });
-
-            // for (filter in ) {
-            //     if (!reportFilters.hasOwnProperty(filter.key)) {
-            //         this.reportFilters[this.report.meta.uriKey] = {};
-            //     }
-            // }
         }
     },
     data() {
@@ -118,24 +97,24 @@ export default {
             setFilters: 'SET_FILTERS',
         }),
         filterChanged(args) {
-            // set the new local report filter
-            console.log('set the new local report filter');
-            console.log(args.filterKey);
-            console.log(args.selected);
             this.reportFilters[this.report.meta.uriKey][args.filterKey] = args.selected;
         },
         applyFilters() {
-            // save the filter in store
-            this.setFilters(this.reportFilters);
+            this.setFilters(_.cloneDeep(this.reportFilters));
             this.$emit('filter-applied');
             this.filterDialog = false;
         },
-        resetFilters() {
+        closeDialog() {
+            this.resetFilters();
+            this.filterDialog = false;
+        },
+        resetAll() {
             this.reportFilters[this.report.meta.uriKey] = {};
-            this.setFilters(this.reportFilters);
+            this.setFilters(_.cloneDeep(this.reportFilters));
             this.$emit('filter-applied');
             this.filterDialog = false;
         },
+        resetFilters() {},
     },
 };
 </script>

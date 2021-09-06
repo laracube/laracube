@@ -4,7 +4,7 @@
             <page-heading :heading="report.meta.heading" :sub-heading="report.meta.subHeading" :loading="loading">
             </page-heading>
             <div class="float-right">
-                <filters v-if="!loading" :report="report"></filters>
+                <render-filters v-if="!loading" :report="report"></render-filters>
             </div>
         </div>
         <v-row class="mt-5">
@@ -24,11 +24,11 @@
 <script>
 import PageHeading from '@/components/ui/PageHeading';
 import RenderResource from '@/components/resources/RenderResource';
-import Filters from '@/components/filters/Filters';
+import RenderFilters from '@/components/filters/RenderFilters';
 
 export default {
     name: 'Report',
-    components: { Filters, PageHeading, RenderResource },
+    components: { RenderFilters, PageHeading, RenderResource },
     data() {
         return {
             loading: true,

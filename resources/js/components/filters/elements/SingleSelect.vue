@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div v-if="!fetching">
         <v-autocomplete
             v-model="selected"
-            :items="items"
+            :items="response"
             chips
             deletable-chips
             @change="filterChanged()"
@@ -11,29 +11,10 @@
 </template>
 
 <script>
+import filter from '@/mixins/filter';
+
 export default {
     name: 'SingleSelect',
-    props: {
-        report: { required: true },
-        filter: { required: true },
-        items: { required: true },
-        storeSelected: { required: true },
-    },
-    data() {
-        return {
-            selected: null,
-        };
-    },
-    mounted() {
-        this.selected = this.storeSelected;
-    },
-    methods: {
-        filterChanged() {
-            this.$emit('filter-changed', {
-                filterKey: this.filter.key,
-                selected: this.selected,
-            });
-        },
-    },
+    mixins: [filter],
 };
 </script>

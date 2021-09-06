@@ -5,6 +5,7 @@ namespace Laracube\Laracube\Tests;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Laracube\Laracube\Laracube;
+use Laracube\Laracube\Tests\Fixtures\Laracube\Filters\UserFilter;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Reports\UserReportOne;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Reports\UserReportTwo;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\Card;
@@ -31,6 +32,10 @@ class TestCaseServiceProvider extends ServiceProvider
             PaginatedTable::class,
             SimpleTable::class,
             Card::class,
+        ]);
+
+        Laracube::pushItems(Laracube::$filters, [
+            UserFilter::class,
         ]);
     }
 

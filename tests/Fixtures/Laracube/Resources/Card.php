@@ -20,19 +20,25 @@ class Card extends ResourceCard
         $count = User::count();
 
         return [
-            'line1' => [
-                'value' => $count,
-            ],
-            'line2' => [
-                'value' => $count - 5,
-            ],
-            'trend' => [
-                'value' => $count - 10,
-                'icon' => 'fa-up',
-            ],
-            'sparkline' => [
-                'value' => [1, 2, 3],
-            ],
+            [
+                'type' => 'bigNumber',
+                'data' => [
+                    'line1' => [
+                        'value' => $count,
+                    ],
+                    'line2' => [
+                        'value' => $count - 5,
+                    ],
+                    'trend' => [
+                        'value' =>  $count - 10,
+                        'cssClass' => 'green--text text--darken-3',
+                        'icon' => [
+                            'value' => 'fa-arrow-up',
+                            'cssClass' => 'green lighten-5 rounded-circle px-4 py-2',
+                        ],
+                    ],
+                ],
+            ]
         ];
     }
 }

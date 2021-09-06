@@ -13,7 +13,7 @@ class ReportTest extends TestCase
         factory(User::class)->create();
 
         $this->actingAs(User::first())
-            ->get('laracube-api/report/user-report-one')
+            ->post('laracube-api/report/user-report-one')
             ->assertSuccessful()
             ->assertJsonFragment([
                 'meta' => [
@@ -33,6 +33,7 @@ class ReportTest extends TestCase
                     'group',
                 ],
                 'resources' => [],
+                'filters' => [],
             ]);
     }
 }

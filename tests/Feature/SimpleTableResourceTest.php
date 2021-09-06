@@ -13,7 +13,7 @@ class SimpleTableResourceTest extends TestCase
         factory(User::class, 40)->create();
 
         $this->actingAs(User::first())
-            ->get('laracube-api/run/resource/simple-table')
+            ->post('laracube-api/run/resource/simple-table')
             ->assertSuccessful()
             ->assertJsonCount(40, 'data')
             ->assertJsonStructure([

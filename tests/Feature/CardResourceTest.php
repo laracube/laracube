@@ -5,6 +5,8 @@ namespace Laracube\Laracube\Tests\Feature;
 use Laracube\Laracube\Tests\Fixtures\Models\User;
 use Laracube\Laracube\Tests\TestCase;
 
+use function dd;
+
 class CardResourceTest extends TestCase
 {
     /** @test */
@@ -13,22 +15,28 @@ class CardResourceTest extends TestCase
         factory(User::class, 40)->create();
 
         $this->actingAs(User::first())
-            ->get('laracube-api/run/resource/card')
+            ->post('laracube-api/run/resource/card')
             ->assertSuccessful()
             ->assertJson([
-                'line1' => [
-                    'value' => 40,
-                ],
-                'line2' => [
-                    'value' => 35,
-                ],
-                'trend' => [
-                    'value' => 30,
-                    'icon' => 'fa-up',
-                ],
-                'sparkline' => [
-                    'value' => [1, 2, 3],
-                ],
+                [
+                    'type' => 'bigNumber',
+                    'data' => [
+                        'line1' => [
+                            'value' => 40,
+                        ],
+                        'line2' => [
+                            'value' => 35,
+                        ],
+                        'trend' => [
+                            'value' =>  30,
+                            'cssClass' => 'green--text text--darken-3',
+                            'icon' => [
+                                'value' => 'fa-arrow-up',
+                                'cssClass' => 'green lighten-5 rounded-circle px-4 py-2',
+                            ],
+                        ],
+                    ],
+                ]
             ]);
     }
 }

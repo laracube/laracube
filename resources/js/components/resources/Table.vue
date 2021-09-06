@@ -68,6 +68,7 @@
 <script>
 import pagination from '@/mixins/pagination';
 import UniversalSkeleton from '@/components/skeleton/UniversalSkeleton';
+import _ from 'lodash';
 
 export default {
     name: 'Table',
@@ -95,12 +96,12 @@ export default {
     watch: {
         page: {
             handler() {
-                this.fetchData(this.filters);
+                this.fetchData(_.cloneDeep(this.filters));
             },
         },
         filters: {
             handler() {
-                this.fetchData(this.filters);
+                this.fetchData(_.cloneDeep(this.filters));
             },
         },
         deep: true,

@@ -23,6 +23,6 @@ class RunResourceController extends Controller
             abort(403);
         }
 
-        return $resource->run();
+        return $resource->run($request);
     }
 }

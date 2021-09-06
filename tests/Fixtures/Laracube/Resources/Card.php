@@ -2,31 +2,20 @@
 
 namespace Laracube\Laracube\Tests\Fixtures\Laracube\Resources;
 
+use Illuminate\Http\Request;
 use Laracube\Laracube\Base\ResourceCard;
 use Laracube\Laracube\Tests\Fixtures\Models\User;
 
 class Card extends ResourceCard
 {
-    /**
-     * The single value that will be displayed as heading.
-     *
-     * @var string
-     */
+    /** {@inheritdoc} */
     public $heading = 'Number of Users';
 
-    /**
-     * The single value that will be displayed as sub-heading.
-     *
-     * @var string
-     */
+    /** {@inheritdoc} */
     public $subHeading = 'Total number of users';
 
-    /**
-     * Get the output for the resource.
-     *
-     * @return array
-     */
-    public function output()
+    /** {@inheritdoc} */
+    public function output(Request $request)
     {
         $count = User::count();
 

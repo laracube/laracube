@@ -35,7 +35,6 @@ export default {
             if (this.url === undefined) {
                 throw 'url data property not defined';
             }
-
             if (params) {
                 params.page = this.page;
             } else {
@@ -43,7 +42,6 @@ export default {
                     page: this.page,
                 };
             }
-
             this.$axios
                 .post(this.url, params)
                 .then(({ data }) => {

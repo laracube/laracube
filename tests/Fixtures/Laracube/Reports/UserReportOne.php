@@ -6,33 +6,23 @@ use Laracube\Laracube\Base\Report;
 
 class UserReportOne extends Report
 {
-    /**
-     * The single value name that would be used to display in navigation.
-     *
-     * @var string
-     */
+    /** {@inheritdoc} */
     public static $navigation = 'User Report One';
 
-    /**
-     * The single value that will be displayed as heading.
-     *
-     * @var string
-     */
+    /** {@inheritdoc} */
     public static $heading = 'User Report One';
 
-    /**
-     * The single value that will be displayed as sub-heading.
-     *
-     * @var string
-     */
+    /** {@inheritdoc} */
     public static $subHeading = 'This report shows all the users.';
 
-    /**
-     * Get the resources for the report.
-     *
-     * @return array
-     */
+    /** {@inheritdoc} */
     public function resources()
+    {
+        return [];
+    }
+
+    /** {@inheritdoc} */
+    public function filters()
     {
         return [];
     }

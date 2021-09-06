@@ -107,7 +107,11 @@ export default {
             setFilters: 'SET_FILTERS',
         }),
         filterChanged(args) {
-            this.reportFilters[this.report.meta.uriKey][args.filterKey] = args.selected;
+            if (args.selected && args.selected.length) {
+                this.reportFilters[this.report.meta.uriKey][args.filterKey] = args.selected;
+            } else {
+                delete this.reportFilters[this.report.meta.uriKey][args.filterKey];
+            }
         },
         applyFilters() {
             this.setFilters(_.cloneDeep(this.reportFilters));

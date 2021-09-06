@@ -2,6 +2,7 @@
 
 namespace Laracube\Laracube\Base;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Laracube\Laracube\Traits\AuthorizedToSee;
 
@@ -47,10 +48,12 @@ abstract class Resource
     /**
      * Run the resource.
      *
+     * @param \Illuminate\Http\Request $request
+     *
      * @return mixed
      * @throws \Throwable
      */
-    abstract public function run();
+    abstract public function run(Request $request);
 
     /**
      * Get the URI key for the resource.

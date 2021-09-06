@@ -1,10 +1,10 @@
 <template>
     <div class="fill-height">
         <div v-if="resource.component === 'table'" class="fill-height">
-            <laracube-table :resource="resource"></laracube-table>
+            <laracube-table :resource="resource" :report="report"></laracube-table>
         </div>
         <div v-if="resource.component === 'card'" class="fill-height">
-            <card :resource="resource"></card>
+            <card :resource="resource" :report="report"></card>
         </div>
     </div>
 </template>
@@ -18,6 +18,7 @@ export default {
     components: { Card, LaracubeTable },
     props: {
         resource: { required: true },
+        report: { required: true },
     },
 };
 </script>

@@ -40,16 +40,33 @@ export default {
     },
     props: {
         resource: { required: true },
+        report: { required: true },
     },
     computed: {
         url() {
             return '/laracube-api/run/resource/' + this.resource.uriKey;
         },
+        filters() {
+            this.reportFilters = this.$store.state.filters.filters;
+            if (this.reportFilters.hasOwnProperty(this.report.meta.uriKey)) {
+                return this.reportFilters[this.report.meta.uriKey];
+            }
+            return null;
+        },
+    },
+    watch: {
+        filters: {
+            handler() {
+                this.fetchData();
+            },
+        },
+        deep: true,
     },
     data() {
         return {
             fetching: true,
             response: {},
+            reportFilters: {},
         };
     },
     mounted() {
@@ -61,8 +78,9 @@ export default {
             if (this.url === undefined) {
                 throw 'url data property not defined';
             }
+            const params = this.filters;
             this.$axios
-                .post(this.url)
+                .post(this.url, params)
                 .then(({ data }) => {
                     this.response = data;
                 })

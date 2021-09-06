@@ -30,15 +30,19 @@ export default {
         this.fetchData();
     },
     methods: {
-        fetchData() {
+        fetchData(params) {
             this.fetching = true;
             if (this.url === undefined) {
                 throw 'url data property not defined';
             }
 
-            const params = {
-                page: this.page,
-            };
+            if (params) {
+                params.page = this.page;
+            } else {
+                params = {
+                    page: this.page,
+                };
+            }
 
             this.$axios
                 .post(this.url, params)

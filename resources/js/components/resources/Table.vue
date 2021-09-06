@@ -75,6 +75,7 @@ export default {
     mixins: [pagination],
     props: {
         resource: { required: true },
+        report: { required: true },
     },
     computed: {
         url() {
@@ -83,11 +84,23 @@ export default {
         itemsPerPage() {
             return this.pagination.meta.per_page || this.pagination.data.length;
         },
+        filters() {
+            this.reportFilters = this.$store.state.filters.filters;
+            if (this.reportFilters.hasOwnProperty(this.report.meta.uriKey)) {
+                return this.reportFilters[this.report.meta.uriKey];
+            }
+            return null;
+        },
     },
     watch: {
         page: {
             handler() {
-                this.fetchData();
+                this.fetchData(this.filters);
+            },
+        },
+        filters: {
+            handler() {
+                this.fetchData(this.filters);
             },
         },
         deep: true,

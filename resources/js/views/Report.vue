@@ -15,7 +15,7 @@
                 v-for="(resource, index) in report.resources"
                 :key="index"
             >
-                <render-resource :resource="resource"></render-resource>
+                <render-resource :report="report" :resource="resource"></render-resource>
             </v-col>
         </v-row>
     </div>

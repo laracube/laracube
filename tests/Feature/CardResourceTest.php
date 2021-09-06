@@ -5,8 +5,6 @@ namespace Laracube\Laracube\Tests\Feature;
 use Laracube\Laracube\Tests\Fixtures\Models\User;
 use Laracube\Laracube\Tests\TestCase;
 
-use function dd;
-
 class CardResourceTest extends TestCase
 {
     /** @test */
@@ -36,7 +34,7 @@ class CardResourceTest extends TestCase
                             ],
                         ],
                     ],
-                ]
+                ],
             ]);
     }
 }

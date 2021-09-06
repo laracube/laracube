@@ -38,7 +38,7 @@ class Card extends ResourceCard
                         ],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

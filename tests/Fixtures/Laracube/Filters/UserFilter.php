@@ -2,8 +2,8 @@
 
 namespace Laracube\Laracube\Tests\Fixtures\Laracube\Filters;
 
-use Laracube\Laracube\Tests\Fixtures\Models\User;
 use Laracube\Laracube\Base\Filter;
+use Laracube\Laracube\Tests\Fixtures\Models\User;
 
 class UserFilter extends Filter
 {

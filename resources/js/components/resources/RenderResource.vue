@@ -1,10 +1,10 @@
 <template>
     <div class="fill-height">
         <div v-if="resource.component === 'table'" class="fill-height">
-            <laracube-table :resource="resource" :report="report"></laracube-table>
+            <laracube-table :resource="resource" :report="report" :key="resource.uriKey"></laracube-table>
         </div>
         <div v-if="resource.component === 'card'" class="fill-height">
-            <card :resource="resource" :report="report"></card>
+            <card :resource="resource" :report="report" :key="resource.uriKey"></card>
         </div>
     </div>
 </template>

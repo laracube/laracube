@@ -32,7 +32,11 @@
                         <div v-html="item[column.value]"></div>
                     </template>
                 </v-data-table>
-                <v-row no-gutters class="pt-2 align-center" v-if="resource.type === 'paginated'">
+                <v-row
+                    no-gutters
+                    class="pt-2 align-center"
+                    v-if="resource.type === 'paginated' && pagination.meta.total"
+                >
                     <v-col class="pl-5 grey--text text--darken-2">
                         Showing
                         <span class="font-weight-bold">
@@ -66,14 +70,12 @@
 </template>
 
 <script>
-import pagination from '@/mixins/pagination';
 import UniversalSkeleton from '@/components/skeleton/UniversalSkeleton';
 import _ from 'lodash';
 
 export default {
     name: 'Table',
     components: { UniversalSkeleton },
-    mixins: [pagination],
     props: {
         resource: { required: true },
         report: { required: true },
@@ -93,6 +95,36 @@ export default {
             return null;
         },
     },
+    data() {
+        return {
+            page: 1,
+            fetching: true,
+            options: {},
+            pagination: {
+                data: [],
+                links: {
+                    first: null,
+                    last: null,
+                    prev: null,
+                    next: null,
+                },
+                meta: {
+                    current_page: null,
+                    from: null,
+                    last_page: null,
+                    path: null,
+                    per_page: null,
+                    to: null,
+                    total: null,
+                    links: [],
+                    columns: [],
+                },
+            },
+        };
+    },
+    mounted() {
+        this.fetchData(_.cloneDeep(this.filters));
+    },
     watch: {
         page: {
             handler() {
@@ -105,6 +137,32 @@ export default {
             },
         },
         deep: true,
+    },
+    methods: {
+        fetchData(params) {
+            this.fetching = true;
+            if (this.url === undefined) {
+                throw 'url data property not defined';
+            }
+            if (params) {
+                params.page = this.page;
+            } else {
+                params = {
+                    page: this.page,
+                };
+            }
+            this.$axios
+                .post(this.url, params)
+                .then(({ data }) => {
+                    this.pagination = data;
+                })
+                .catch((error) => {
+                    this.$toasted.error(error.message);
+                })
+                .finally(() => {
+                    this.fetching = false;
+                });
+        },
     },
 };
 </script>

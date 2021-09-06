@@ -43,6 +43,7 @@
                                         :filter="filter"
                                         :refresh="filterDialog"
                                         @filter-changed="filterChanged"
+                                        :key="filter.key"
                                     ></multiple-select>
                                 </div>
                             </v-list-item-content>

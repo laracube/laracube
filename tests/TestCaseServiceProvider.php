@@ -5,9 +5,12 @@ namespace Laracube\Laracube\Tests;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Laracube\Laracube\Laracube;
+use Laracube\Laracube\Tests\Fixtures\Laracube\Filters\CannotSeeUserFilter;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Filters\UserFilter;
+use Laracube\Laracube\Tests\Fixtures\Laracube\Reports\CannotSeeUserReport;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Reports\UserReportOne;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Reports\UserReportTwo;
+use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\CannotSeeResource;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\Card;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\PaginatedTable;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Resources\SimpleTable;
@@ -26,16 +29,19 @@ class TestCaseServiceProvider extends ServiceProvider
         Laracube::pushItems(Laracube::$reports, [
             UserReportOne::class,
             UserReportTwo::class,
+            CannotSeeUserReport::class,
         ]);
 
         Laracube::pushItems(Laracube::$resources, [
             PaginatedTable::class,
             SimpleTable::class,
             Card::class,
+            CannotSeeResource::class,
         ]);
 
         Laracube::pushItems(Laracube::$filters, [
             UserFilter::class,
+            CannotSeeUserFilter::class,
         ]);
     }
 

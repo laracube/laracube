@@ -5,7 +5,9 @@
                 <template #activator="{ on: dialog }">
                     <v-tooltip left>
                         <template #activator="{ on: tooltip }">
-                            <v-icon v-on="{ ...tooltip, ...dialog }"> mdi-filter-variant </v-icon>
+                            <v-badge :content="appliedFilterCount" :value="appliedFilterCount" color="primary">
+                                <v-icon v-on="{ ...tooltip, ...dialog }"> mdi-filter-variant </v-icon>
+                            </v-badge>
                         </template>
                         <span>Filters</span>
                     </v-tooltip>
@@ -80,11 +82,19 @@ export default {
     },
     mounted() {
         if (Array.isArray(this.report.filters) && this.report.filters.length) {
-            this.reportFilters = _.cloneDeep(this.$store.state.filters.filters);
+            this.resetFilters();
             if (!this.reportFilters.hasOwnProperty(this.report.meta.uriKey)) {
                 this.reportFilters[this.report.meta.uriKey] = {};
             }
         }
+    },
+    computed: {
+        appliedFilterCount() {
+            if (this.reportFilters.hasOwnProperty(this.report.meta.uriKey)) {
+                return _.size(this.reportFilters[this.report.meta.uriKey]);
+            }
+            return 0;
+        },
     },
     data() {
         return {
@@ -102,6 +112,7 @@ export default {
         applyFilters() {
             this.setFilters(_.cloneDeep(this.reportFilters));
             this.$emit('filter-applied');
+            this.resetFilters();
             this.filterDialog = false;
         },
         closeDialog() {
@@ -112,9 +123,12 @@ export default {
             this.reportFilters[this.report.meta.uriKey] = {};
             this.setFilters(_.cloneDeep(this.reportFilters));
             this.$emit('filter-applied');
+            this.resetFilters();
             this.filterDialog = false;
         },
-        resetFilters() {},
+        resetFilters() {
+            this.reportFilters = _.cloneDeep(this.$store.state.filters.filters);
+        },
     },
 };
 </script>

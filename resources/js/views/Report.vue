@@ -1,19 +1,21 @@
 <template>
     <div>
-        <page-heading
-            :heading="report.meta.heading"
-            :sub-heading="report.meta.subHeading"
-            :loading="loading"
-        >
-        </page-heading>
+        <div class="d-flex align-center justify-space-between">
+            <page-heading :heading="report.meta.heading" :sub-heading="report.meta.subHeading" :loading="loading">
+            </page-heading>
+            <div class="float-right">
+                <render-filters v-if="!loading" :report="report"></render-filters>
+            </div>
+        </div>
         <v-row class="mt-5">
             <v-col
                 cols="12"
-                :sm="resource.columns || 3"
+                :md="resource.columns || 3"
+                :sm="12"
                 v-for="(resource, index) in report.resources"
                 :key="index"
             >
-                <render-resource :resource="resource"></render-resource>
+                <render-resource :report="report" :resource="resource"></render-resource>
             </v-col>
         </v-row>
     </div>
@@ -22,10 +24,11 @@
 <script>
 import PageHeading from '@/components/ui/PageHeading';
 import RenderResource from '@/components/resources/RenderResource';
+import RenderFilters from '@/components/filters/RenderFilters';
 
 export default {
     name: 'Report',
-    components: { PageHeading, RenderResource },
+    components: { RenderFilters, PageHeading, RenderResource },
     data() {
         return {
             loading: true,
@@ -37,6 +40,7 @@ export default {
                     subHeading: null,
                 },
                 resources: [],
+                filters: [],
             },
         };
     },
@@ -48,7 +52,7 @@ export default {
             this.loading = true;
 
             this.$axios
-                .get(`/laracube-api/report/${this.$route.params.uriKey}`)
+                .post(`/laracube-api/report/${this.$route.params.uriKey}`)
                 .then((response) => {
                     this.report = response.data;
                     document.title = this.report.meta.navigation;
@@ -59,9 +63,6 @@ export default {
                 .finally(() => {
                     this.loading = false;
                 });
-        },
-        getResourceRunUrl(resource) {
-            return '/laracube-api/run/resource/' + resource.uriKey;
         },
     },
 };

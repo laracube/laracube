@@ -6,13 +6,7 @@ use Laracube\Laracube\Base\ResourceTableCollection;
 
 class UserCollection extends ResourceTableCollection
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Support\Collection
-     */
+    /** {@inheritdoc} */
     public function toArray($request)
     {
         return $this->collection->transform(function ($item) {
@@ -26,11 +20,7 @@ class UserCollection extends ResourceTableCollection
         });
     }
 
-    /**
-     * Get the columns definition for the report.
-     *
-     * @return array
-     */
+    /** {@inheritdoc} */
     public static function columns()
     {
         return [

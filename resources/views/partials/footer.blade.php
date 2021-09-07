@@ -1,9 +1,9 @@
 <v-row no-gutters class="text-center">
-    <v-col class="text--secondary caption">
+    <v-col class="grey--text text--darken-2 caption">
         <a
-            href="https://github.com/laracube/laracube"
+            href="https://github.com/laracube"
             target="_blank"
-            class="text--secondary text-decoration-none"
+            class="grey--text text--darken-2 text-decoration-none"
         >
             Laracube
         </a>

@@ -3,9 +3,8 @@
 exports[`TablePaginated should show the correct data from api response 1`] = `
 <div class="fill-height">
   <div class="fill-height">
-    <div class="shadow fill-height v-card v-card--flat v-sheet theme--light">
-      <div class="v-card__title">Heading</div>
-      <div class="v-card__subtitle">Sub Heading</div>
+    <div class="lc-shadow lc-rounded fill-height v-card v-card--flat v-sheet theme--light">
+      <div class="v-card__title grey--text text--darken-2 pr-2">Heading</div> <span class="v-tooltip v-tooltip--right"><!----></span><i aria-haspopup="true" aria-expanded="false" class="fas fa-info-circle grey--text text--darken-1"></i>
       <div class="v-card__text px-0">
         <div>
           <div class="v-data-table theme--light">
@@ -16,7 +15,7 @@ exports[`TablePaginated should show the correct data from api response 1`] = `
                 </colgroup>
                 <thead class="v-data-table-header">
                   <tr>
-                    <th role="columnheader" scope="col" aria-label="Name" class="text-start"><span>Name</span></th>
+                    <th role="columnheader" scope="col" aria-label="Name" class="text-start"><span class="grey--text text--darken-2">Name</span></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -35,23 +34,23 @@ exports[`TablePaginated should show the correct data from api response 1`] = `
             </div>
           </div>
           <div class="row pt-2 align-center no-gutters">
-            <div class="pl-5 col">
+            <div class="pl-5 grey--text text--darken-2 col">
               Showing
-              <span class="font-weight-medium">
+              <span class="font-weight-bold">
                         1
                     </span>
               to
-              <span class="font-weight-medium">
+              <span class="font-weight-bold">
                         3
                     </span>
               of
-              <span class="font-weight-medium">
+              <span class="font-weight-bold">
                         20
                     </span>
               results
             </div>
             <div class="col">
-              <nav role="navigation" aria-label="Pagination Navigation" class="float-right pr-3">
+              <nav role="navigation" aria-label="Pagination Navigation" class="float-right pr-3 grey--text text--darken-2">
                 <ul class="v-pagination theme--light">
                   <li><button disabled="disabled" type="button" aria-label="Previous page" class="v-pagination__navigation v-pagination__navigation--disabled"><i aria-hidden="true" class="v-icon notranslate mdi mdi-chevron-left theme--light"></i></button></li>
                   <li><button type="button" aria-current="true" aria-label="Current Page, Page 1" class="v-pagination__item v-pagination__item--active primary">1</button></li>

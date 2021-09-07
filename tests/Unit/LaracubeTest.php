@@ -11,7 +11,7 @@ class LaracubeTest extends TestCase
     /** @test */
     public function it_should_register_report_items()
     {
-        $this->assertCount(2, Laracube::$items['reports']);
+        $this->assertCount(3, Laracube::$items['reports']);
     }
 
     /** @test */
@@ -26,6 +26,6 @@ class LaracubeTest extends TestCase
     /** @test */
     public function it_should_get_item_details()
     {
-        $this->assertCount(2, Laracube::getAllItemDetails(Laracube::$reports));
+        $this->assertCount(3, Laracube::getAllItemDetails(Laracube::$reports));
     }
 }

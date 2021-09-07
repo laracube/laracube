@@ -4,6 +4,7 @@ namespace Laracube\Laracube\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Laracube\Laracube\Base\Filter;
 use Laracube\Laracube\Base\Report;
 use Laracube\Laracube\Base\Resource;
 use Laracube\Laracube\Laracube;
@@ -22,6 +23,7 @@ class LaracubeApplicationServiceProvider extends ServiceProvider
 
         Laracube::registerItems(Laracube::$reports, app_path('Laracube/Reports'), Report::class);
         Laracube::registerItems(Laracube::$resources, app_path('Laracube/Resources'), Resource::class);
+        Laracube::registerItems(Laracube::$filters, app_path('Laracube/Filters'), Filter::class);
     }
 
     /**

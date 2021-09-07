@@ -2,6 +2,8 @@
 
 namespace Laracube\Laracube\Base;
 
+use Illuminate\Http\Request;
+
 abstract class ResourceTable extends Resource
 {
     /**
@@ -28,10 +30,12 @@ abstract class ResourceTable extends Resource
     /**
      * Get the query for the resource.
      *
+     * @param \Illuminate\Http\Request $request
+     *
      * @return mixed
      * @throws \Throwable
      */
-    abstract public function query();
+    abstract public function query(Request $request);
 
     /**
      * Run the resource.
@@ -39,18 +43,16 @@ abstract class ResourceTable extends Resource
      * @return mixed
      * @throws \Throwable
      */
-    public function run()
+    public function run(Request $request)
     {
         if (static::$type === 'paginated') {
-            $resource = $this->query()
+            $resource = $this->query($request)
                 ->paginate(static::$perPageOptions);
-
-            return new static::$collection($resource);
         } else {
-            $resource = $this->query()
+            $resource = $this->query($request)
                 ->get();
-
-            return new static::$collection($resource);
         }
+
+        return new static::$collection($resource);
     }
 }

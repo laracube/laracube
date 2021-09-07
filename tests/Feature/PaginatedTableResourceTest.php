@@ -13,7 +13,7 @@ class PaginatedTableResourceTest extends TestCase
         factory(User::class, 40)->create();
 
         $this->actingAs(User::first())
-            ->get('laracube-api/run/resource/paginated-table')
+            ->post('laracube-api/run/resource/paginated-table')
             ->assertSuccessful()
             ->assertJsonCount(20, 'data')
             ->assertJsonStructure([

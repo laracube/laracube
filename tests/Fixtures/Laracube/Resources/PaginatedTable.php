@@ -2,6 +2,7 @@
 
 namespace Laracube\Laracube\Tests\Fixtures\Laracube\Resources;
 
+use Illuminate\Http\Request;
 use Laracube\Laracube\Base\ResourceTable;
 use Laracube\Laracube\Tests\Fixtures\Laracube\Collections\UserCollection;
 use Laracube\Laracube\Tests\Fixtures\Models\User;
@@ -15,27 +16,14 @@ class PaginatedTable extends ResourceTable
      */
     public static $collection = UserCollection::class;
 
-    /**
-     * The single value that will be displayed as heading.
-     *
-     * @var string
-     */
+    /** {@inheritdoc} */
     public $heading = 'User List';
 
-    /**
-     * The single value that will be displayed as sub-heading.
-     *
-     * @var string
-     */
+    /** {@inheritdoc} */
     public $subHeading = 'List of all users.';
 
-    /**
-     * Get the query for the report.
-     *
-     * @return mixed
-     * @throws \Throwable
-     */
-    public function query()
+    /** {@inheritdoc} */
+    public function query(Request $request)
     {
         return User::orderBy('name');
     }

@@ -3,9 +3,12 @@
 namespace Laracube\Laracube\Base;
 
 use Illuminate\Support\Str;
+use Laracube\Laracube\Traits\AuthorizedToSee;
 
 abstract class Report
 {
+    use AuthorizedToSee;
+
     /**
      * The logical group associated with the report.
      *
@@ -42,6 +45,13 @@ abstract class Report
     abstract public function resources();
 
     /**
+     * Get the filters for the report.
+     *
+     * @return array
+     */
+    abstract public function filters();
+
+    /**
      * Get the URI key for the report.
      *
      * @return string
@@ -61,6 +71,7 @@ abstract class Report
         return [
             'meta' => $this->meta(),
             'resources' => $this->getResources(),
+            'filters' => $this->getFilters(),
         ];
     }
 
@@ -90,9 +101,29 @@ abstract class Report
         $resources = [];
 
         foreach ($this->resources() as $resource) {
-            $resources[] = $resource->details();
+            if ($resource->canSee()) {
+                $resources[] = $resource->details();
+            }
         }
 
         return $resources;
+    }
+
+    /**
+     * Get all the filters of the report.
+     *
+     * @return array
+     */
+    private function getFilters()
+    {
+        $filters = [];
+
+        foreach ($this->filters() as $filter) {
+            if ($filter->canSee()) {
+                $filters[] = $filter->details();
+            }
+        }
+
+        return $filters;
     }
 }

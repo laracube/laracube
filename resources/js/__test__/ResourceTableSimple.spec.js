@@ -1,23 +1,22 @@
 import { createLocalVue, mount } from '@vue/test-utils';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import Vuetify from 'vuetify';
 import RenderResource from '@/components/resources/RenderResource';
 import flushPromises from 'flush-promises';
 import axios from 'axios';
+import filters from '@/store/modules/filters';
 
 Vue.use(Vuetify);
 const localVue = createLocalVue();
+localVue.use(Vuex);
 
 jest.mock('axios', () => ({
-    get: () =>
+    post: () =>
         Promise.resolve({
             data: {
                 data: [{ name: 'Marvin' }, { name: 'Jasper' }],
                 meta: {
-                    last_page: 5,
-                    from: 1,
-                    to: 3,
-                    total: 20,
                     columns: [
                         {
                             sortable: false,
@@ -33,8 +32,18 @@ jest.mock('axios', () => ({
 
 function factory() {
     let vuetify = new Vuetify();
+    let store = new Vuex.Store({
+        modules: {
+            filters: {
+                state: filters.state,
+                mutations: filters.mutations,
+                namespaced: true,
+            },
+        },
+    });
 
     return mount(RenderResource, {
+        store,
         localVue,
         vuetify,
         propsData: {
@@ -43,8 +52,13 @@ function factory() {
                 component: 'table',
                 heading: 'Heading',
                 subHeading: 'Sub Heading',
-                type: 'paginated',
+                type: 'simple',
                 uriKey: 'paginated-table',
+            },
+            report: {
+                meta: {
+                    uriKey: 'net-revenue-report',
+                },
             },
         },
         mocks: {
@@ -53,18 +67,16 @@ function factory() {
     });
 }
 
-describe('TablePaginated', () => {
+describe('TableSimple', () => {
     it('should load the components', () => {
         const wrapper = factory();
         expect(wrapper.find('.v-card').vm).toBeTruthy();
     });
 
-    it('should show the heading and sub-heading', () => {
+    it('should show the heading and sub-heading tooltip', () => {
         const wrapper = factory();
         expect(wrapper.find('.v-card__title').html()).toContain('Heading');
-        expect(wrapper.find('.v-card__subtitle').html()).toContain(
-            'Sub Heading',
-        );
+        expect(wrapper.find('.v-tooltip').vm).toBeTruthy();
     });
 
     it('should show the correct data from api response', async () => {

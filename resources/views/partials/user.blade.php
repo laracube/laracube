@@ -9,7 +9,7 @@
                 </v-list-item-avatar>
             @endisset
             <v-list-item-content>
-                <v-list-item-title>
+                <v-list-item-title class="grey--text text--darken-3">
                     {{ $user->name ?? $user->email ??  'Laracube User' }}
                 </v-list-item-title>
             </v-list-item-content>

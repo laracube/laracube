@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="lc-sparkline">
         <v-sparkline
             v-if="data && Array.isArray(data.value)"
             :auto-draw="data.autoDraw"

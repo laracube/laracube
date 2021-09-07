@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="lc-custom-html">
         <div :class="data.cssClass" v-if="data && data.value" v-html="data.value"></div>
     </div>
 </template>

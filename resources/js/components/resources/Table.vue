@@ -72,6 +72,7 @@
 <script>
 import UniversalSkeleton from '@/components/skeleton/UniversalSkeleton';
 import _ from 'lodash';
+import { mapState } from 'vuex';
 
 export default {
     name: 'Table',
@@ -87,8 +88,9 @@ export default {
         itemsPerPage() {
             return this.pagination.meta.per_page || this.pagination.data.length;
         },
-        filters() {
-            this.reportFilters = this.$store.state.filters.filters;
+        ...mapState('filters', ['filters']),
+        resourceFilters() {
+            this.reportFilters = this.filters;
             if (this.reportFilters.hasOwnProperty(this.report.meta.uriKey)) {
                 return this.reportFilters[this.report.meta.uriKey];
             }
@@ -123,17 +125,17 @@ export default {
         };
     },
     mounted() {
-        this.fetchData(_.cloneDeep(this.filters));
+        this.fetchData(_.cloneDeep(this.resourceFilters));
     },
     watch: {
         page: {
             handler() {
-                this.fetchData(_.cloneDeep(this.filters));
+                this.fetchData(_.cloneDeep(this.resourceFilters));
             },
         },
         filters: {
             handler() {
-                this.fetchData(_.cloneDeep(this.filters));
+                this.fetchData(_.cloneDeep(this.resourceFilters));
             },
         },
         deep: true,

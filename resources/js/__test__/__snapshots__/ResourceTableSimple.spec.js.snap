@@ -3,9 +3,8 @@
 exports[`TableSimple should show the correct data from api response 1`] = `
 <div class="fill-height">
   <div class="fill-height">
-    <div class="shadow fill-height v-card v-card--flat v-sheet theme--light">
-      <div class="v-card__title">Heading</div>
-      <div class="v-card__subtitle">Sub Heading</div>
+    <div class="lc-shadow lc-rounded fill-height v-card v-card--flat v-sheet theme--light">
+      <div class="v-card__title grey--text text--darken-2 pr-2">Heading</div> <span class="v-tooltip v-tooltip--right"><!----></span><i aria-haspopup="true" aria-expanded="false" class="fas fa-info-circle grey--text text--darken-1"></i>
       <div class="v-card__text px-0">
         <div>
           <div class="v-data-table theme--light">
@@ -16,7 +15,7 @@ exports[`TableSimple should show the correct data from api response 1`] = `
                 </colgroup>
                 <thead class="v-data-table-header">
                   <tr>
-                    <th role="columnheader" scope="col" aria-label="Name" class="text-start"><span>Name</span></th>
+                    <th role="columnheader" scope="col" aria-label="Name" class="text-start"><span class="grey--text text--darken-2">Name</span></th>
                   </tr>
                 </thead>
                 <tbody>

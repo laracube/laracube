@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BigNumber should show the correct data from api response for line 1 1`] = `
+<div class="fill-height">
+  <!---->
+  <!---->
+</div>
+`;

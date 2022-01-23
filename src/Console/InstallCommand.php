@@ -120,7 +120,7 @@ class InstallCommand extends Command
     /**
      * Set the namespace on the given file.
      *
-     * @param string $file
+     * @param  string  $file
      * @return void
      */
     protected function setAppNamespaceOn($file)

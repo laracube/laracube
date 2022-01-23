@@ -48,9 +48,9 @@ abstract class Resource
     /**
      * Run the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return mixed
+     *
      * @throws \Throwable
      */
     abstract public function run(Request $request);
@@ -69,7 +69,6 @@ abstract class Resource
      * Set the columns of the resource.
      *
      * @param $columns
-     *
      * @return $this
      */
     public function setColumns($columns)

@@ -16,8 +16,7 @@ abstract class ResourceCard extends Resource
     /**
      * Get the output for the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     abstract public function output(Request $request);
@@ -25,8 +24,7 @@ abstract class ResourceCard extends Resource
     /**
      * Run the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function run(Request $request)

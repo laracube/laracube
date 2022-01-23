@@ -15,6 +15,7 @@ class LaracubeApplicationServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      *
      * @return void
+     *
      * @throws \ReflectionException
      */
     public function boot()

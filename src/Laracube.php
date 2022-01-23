@@ -51,8 +51,7 @@ class Laracube
     /**
      * Determine if the given request can access the Laracube dashboard.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
     public static function check(Request $request)
@@ -87,10 +86,10 @@ class Laracube
      * Register all of the item classes in the given directory.
      *
      * @param $itemKey
-     * @param string $directory
+     * @param  string  $directory
      * @param $baseClass
-     *
      * @return void
+     *
      * @throws \ReflectionException
      */
     public static function registerItems($itemKey, string $directory, $baseClass)
@@ -125,7 +124,7 @@ class Laracube
      * Push Items.
      *
      * @param $itemKey
-     * @param array $items
+     * @param  array  $items
      */
     public static function pushItems($itemKey, array $items)
     {
@@ -145,7 +144,6 @@ class Laracube
      *
      * @param $itemKey
      * @param $uriKey
-     *
      * @return mixed
      */
     public static function getItemClass($itemKey, $uriKey)
@@ -161,7 +159,6 @@ class Laracube
      * Return the details of items.
      *
      * @param $itemKey
-     *
      * @return array
      */
     public static function getAllItemDetails($itemKey)

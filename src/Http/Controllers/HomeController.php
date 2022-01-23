@@ -63,7 +63,6 @@ class HomeController extends Controller
      * Get the landing report.
      *
      * @param $groups
-     *
      * @return mixed
      */
     private function getLandingReport($groups)

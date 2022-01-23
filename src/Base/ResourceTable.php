@@ -30,9 +30,9 @@ abstract class ResourceTable extends Resource
     /**
      * Get the query for the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return mixed
+     *
      * @throws \Throwable
      */
     abstract public function query(Request $request);
@@ -41,6 +41,7 @@ abstract class ResourceTable extends Resource
      * Run the resource.
      *
      * @return mixed
+     *
      * @throws \Throwable
      */
     public function run(Request $request)

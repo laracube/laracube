@@ -11,8 +11,7 @@ class RunFilterController extends Controller
      * Get the result of the filter.
      *
      * @param $uriKey
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function index($uriKey, Request $request)

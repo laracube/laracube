@@ -85,7 +85,6 @@ export default {
                     this.response = data;
                 })
                 .catch((error) => {
-                    console.log(error);
                     this.$toasted.error(error.message);
                 })
                 .finally(() => {

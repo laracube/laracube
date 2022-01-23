@@ -11,8 +11,7 @@ class ReportController extends Controller
      * Get the result of the report.
      *
      * @param $uriKey
-     * @param \Illuminate\Http\Request $request
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function index($uriKey, Request $request)

@@ -51,7 +51,6 @@ abstract class Filter
      * Set the heading of the filter.
      *
      * @param $heading
-     *
      * @return $this
      */
     public function setHeading($heading)
@@ -65,7 +64,6 @@ abstract class Filter
      * Set the key of the filter.
      *
      * @param $key
-     *
      * @return $this
      */
     public function setKey($key)

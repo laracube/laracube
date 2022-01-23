@@ -35,6 +35,7 @@
                                         :filter="filter"
                                         :refresh="filterDialog"
                                         @filter-changed="filterChanged"
+                                        :key="filter.key"
                                     ></single-select>
                                 </div>
                                 <div v-if="filter.type === 'multiple-select'">
@@ -108,7 +109,10 @@ export default {
             setFilters: 'SET_FILTERS',
         }),
         filterChanged(args) {
-            if (args.selected && args.selected.length) {
+            let condition =
+                !!(!Array.isArray(args.selected) && args.selected) ||
+                !!(Array.isArray(args.selected) && args.selected.length);
+            if (condition) {
                 this.reportFilters[this.report.meta.uriKey][args.filterKey] = args.selected;
             } else {
                 delete this.reportFilters[this.report.meta.uriKey][args.filterKey];

@@ -16,7 +16,7 @@
 import filter from '@/mixins/filter';
 
 export default {
-    name: 'SingleSelect',
+    name: 'MultipleSelect',
     mixins: [filter],
 };
 </script>
